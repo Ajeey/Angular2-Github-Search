@@ -6,7 +6,7 @@
   "main": "src/tmp/app/main.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:Ajeey/Angular2-Github-Search.git"
   },
   "engines": {
     "node": ">=4.3"
@@ -33,7 +33,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "git@github.com:Ajeey/Angular2-Github-Search.git"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
