@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Search } from './search';
 import { GithubSearchService } from './github.service';
-import {CONSTANTS} from '../shared';
+import { CONSTANTS } from '../shared';
 
 @Component({
     selector: 'as-home',
@@ -12,15 +12,14 @@ import {CONSTANTS} from '../shared';
     providers: [GithubSearchService]
 })
 export class HomeComponent {
-    @Input() error_msg: string;
+    public repos: Array<any> = [];
     
-    private strings;
-    private model = new Search('');
-    private fetching: Boolean = false;
-    private repos: Array<any> = [];
-    private isError: Boolean = false;
-    private profileImage: string = "";
-    private isEmpty = null;
+    public strings;
+    public model = new Search('');
+    public fetching: Boolean = false;
+    public isError: Boolean = false;
+    public profileImage: string = "";
+    public isEmpty = null;
 
     constructor(private githubSearchService: GithubSearchService) {
         this.strings = CONSTANTS.MAIN.APP;

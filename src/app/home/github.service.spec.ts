@@ -1,9 +1,6 @@
 import {
     inject,
     beforeEachProviders
-    // addProviders,
-    // TestComponentBuilder,
-    // ComponentFixture
 } from '@angular/core/testing';
 import {provide} from '@angular/core';
 import {BaseRequestOptions, Http, Response, ResponseOptions} from '@angular/http';
@@ -70,6 +67,15 @@ describe('MockBackend: GithubSearchService', () => {
         let username = "ajeey";
         let repoUrl =  service.formRepoUrl(username);
         expect(repoUrl).toEqual("https://api.github.com/users/ajeey/repos");
+    });
+
+    it('should return an error', () => {
+        let error = {
+            "message": "Not Found",
+            "documentation_url": "https://developer.github.com/v3" 
+        };
+        let result = service.handleError(error);
+        expect(result.error).toEqual("Not Found");
     });
 });
 

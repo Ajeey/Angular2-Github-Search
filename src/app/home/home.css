@@ -76,6 +76,10 @@
 	margin: 20px 45px;
 	background: #FFF;
 	transition: all .2s ease-in-out;
+
+    opacity: 0;
+    animation: fadeIn 0.5s ease;
+    animation-fill-mode: forwards;
 }
 
 .repo:hover {
@@ -101,29 +105,53 @@
 	color: red;
 	font-size: 20px;
     margin-top: 20px;
+
+    opacity: 0;
+    animation: fadeIn 0.5s ease;
+    animation-fill-mode: forwards;
 }
 
 .empty-message {
     margin-top: 20px;
     text-align: center;
     font-size: 20px;
+    
+    opacity: 0;
+    animation: fadeIn 0.5s ease;
+    animation-fill-mode: forwards;
 }
 
 .profile-image {
 	width: 100px;
     height: 100px;
+
+    opacity: 0;
+    animation: fadeIn 0.5s ease;
+    animation-fill-mode: forwards;
 }
 
 .desc {
-  display: block; /* Fallback for non-webkit */
-  display: -webkit-box;
-  max-width: 400px;
-  height: 80px;
-  margin: 0 auto;
-  font-size: $font-size;
-  line-height: $line-height;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    display: block;
+    display: -webkit-box;
+    max-width: 400px;
+    height: 80px;
+    margin: 0 auto;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
