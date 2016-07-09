@@ -1,0 +1,51 @@
+<div class="row search-container">
+    <div class="col-lg-12 col-md-12">
+        <div class="col-lg-6 col-md-6">
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" class="form-control search-text" required name="search" placeholder="Search User" autocomplete="off"
+                    [(ngModel)]="model.text" >
+                </div>
+
+                <button type="submit" class="btn search-button" [disabled]="fetching" >Submit</button>
+            </form>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+            <img [src]="profileImage" class="pull-right profile-image" [hidden]="!profileImage" />
+            
+        </div>
+    </div>
+</div>
+
+<i class="center-fix main-spinner fa fa-spin fa-spinner" [hidden]="!fetching"></i>
+
+<div class="row">
+    <div class="error-message" [hidden]="!isError">
+        <div>{{strings.ERROR_MSG}}</div>
+    </div>
+
+    <div *ngIf="isEmpty" class="empty-message">
+        <div>{{strings.EMPTY_REPOS}}</div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 repos-container">
+        <div *ngIf="repos && repos.length" class="repos">
+            <div class="col-lg-3 col-md-4 col-sm-10 col-xs-10 repo" *ngFor="let repo of repos">
+                <div>
+                    <div class="name">{{repo.name}}</div>
+                    <div class="details">   
+                        <div class="desc"><i class="fa fa-book" aria-hidden="true"></i> {{repo.description}}</div>
+                        <div class="Stars"><i class="fa fa-star" aria-hidden="true"></i> {{repo.stargazers_count}}</div>
+                    </div>
+                    <a [href]="repo.html_url" target="_blank" class="link">
+                        {{strings.EXPLORE_PROJECT}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
