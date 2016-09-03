@@ -3,7 +3,7 @@
         <div class="col-lg-6 col-md-6">
             <form (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <input type="text" class="form-control search-text" required name="search" placeholder="Search GitHub User" autocomplete="off"
+                    <input type="text" class="form-control search-text" required name="search" placeholder="Search By Language" autocomplete="off"
                     [(ngModel)]="model.text" >
                 </div>
 
@@ -11,9 +11,11 @@
             </form>
         </div>
 
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-3 col-md-3" >
+            <div id="slider"></div>
+            <label class="sider-value">{{maxStarCount}}</label>
+
             <img [src]="profileImage" class="pull-right profile-image" [hidden]="!profileImage" />
-            
         </div>
     </div>
 </div>
@@ -36,13 +38,19 @@
                     <div class="name">{{repo.name}}</div>
                     <div class="details">   
                         <div class="desc"><i class="fa fa-book" aria-hidden="true"></i> {{repo.description}}</div>
-                        <div class="Stars"><i class="fa fa-star" aria-hidden="true"></i> {{repo.stargazers_count}}</div>
+                        <div class="stars"><i class="fa fa-star" aria-hidden="true"></i> {{repo.stargazers_count}}</div>
+                        <div class="language">{{repo.language}}</div>
                     </div>
                     <a [href]="repo.html_url" target="_blank" class="link">
                         {{strings.EXPLORE_PROJECT}}
                     </a>
                 </div>
             </div>
+
+            <button (click)="fetchNextPage()" class="btn btn-info load-more" [disabled]="loadingMore"> 
+                <i class=" fa fa-spin fa-spinner fa-2" [hidden]="!loadingMore"></i>
+                   Load More 
+            </button>
         </div>
     </div>
 </div>
